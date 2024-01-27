@@ -22,8 +22,8 @@ pipeline {
         stage('Force Unlock Terraform State') {
             steps {
                 sh 'terraform force-unlock -force LOCK_ID'
-    }
-}
+            }
+        }
         stage('Terraform Plan') {
             steps {
                 sh 'terraform plan'
