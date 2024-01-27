@@ -1,35 +1,29 @@
 pipeline {
     agent any
+
     stages {
-        
         stage('Checkout') {
             steps {
-                checkout scm
+            checkout scm
             }
         }
         
-        stage('Terraform Init') {
+        stage ("terraform init") {
             steps {
-                sh 'terraform init -reconfigure'
+                sh ('terraform init -reconfigure') 
             }
         }
-    
-        stage('Terraform Plan') {
+        stage ("terraform plan") {
             steps {
-                sh 'terraform plan'
+                sh ('terraform plan') 
             }
         }
-
-        stage('Terraform Apply') {
+                
+        stage ("terraform Action") {
             steps {
-                sh 'terraform apply -auto-approve'
-            }
+                echo "Terraform action is --> ${action}"
+                sh ('terraform ${action} --auto-approve') 
+           }
         }
-        
-        // stage('Terraform Destroy') {
-        //     steps {
-        //         sh 'terraform destroy -auto-approve'
-        //     }
-        // }
     }
 }
