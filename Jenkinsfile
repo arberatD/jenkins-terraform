@@ -13,11 +13,11 @@ pipeline {
             }
         }
     
-        stage('Terraform Format') {
-            steps {
-                sh 'terraform fmt'
-            }
-        }
+        // stage('Terraform Format') {
+        //     steps {
+        //         sh 'terraform fmt'
+        //     }
+        // }
 
         stage('Terraform Plan') {
             steps {
