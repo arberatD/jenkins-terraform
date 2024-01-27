@@ -1,11 +1,31 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Hello') {
+     stage('Terraform Init') {
             steps {
-                echo 'Hello xxx World'
+                sh 'terraform init'
             }
         }
+    
+    stage ('Terraform Format')
+            steps {
+                sh 'terraform fmt'
+            }
+
+    stage('Terraform Plan')
+            steps{
+                sh 'terraform plan'
+            }
+
+    stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply -auto-approve'
+            }
+        }
+        // stage('Terraform Destroy') {
+        //     steps {
+        //         sh 'terraform destroy -auto-approve'
+        //     }
+        // }
     }
-}
+
