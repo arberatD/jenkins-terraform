@@ -10,31 +10,26 @@ pipeline {
         
         stage('Terraform Init') {
             steps {
-                sh 'terraform init'
+                sh 'terraform init -reconfigure'
             }
         }
     
-        // // stage('Terraform Format') {
-        // //     steps {
-        // //         sh 'terraform fmt'
-        // //     }
-        // // }
-        // stage('Terraform Plan') {
-        //     steps {
-        //         sh 'terraform plan'
-        //     }
-        // }
-
-        // stage('Terraform Apply') {
-        //     steps {
-        //         sh 'terraform apply -auto-approve'
-        //     }
-        // }
-        
-        stage('Terraform Destroy') {
+        stage('Terraform Plan') {
             steps {
-                sh 'terraform destroy -auto-approve'
+                sh 'terraform plan'
             }
         }
+
+        stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply -auto-approve'
+            }
+        }
+        
+        // stage('Terraform Destroy') {
+        //     steps {
+        //         sh 'terraform destroy -auto-approve'
+        //     }
+        // }
     }
 }
