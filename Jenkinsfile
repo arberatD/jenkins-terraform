@@ -8,16 +8,16 @@ pipeline {
             }
         }
         
-        stage ("terraform init") {
-            steps {
-                sh ('terraform init -reconfigure') 
-            }
-        }
-        stage ("terraform plan") {
-            steps {
-                sh ('terraform plan') 
-            }
-        }
+        // stage ("terraform init") {
+        //     steps {
+        //         sh ('terraform init -reconfigure') 
+        //     }
+        // }
+        // stage ("terraform plan") {
+        //     steps {
+        //         sh ('terraform plan') 
+        //     }
+        // }
                 
         stage ("terraform Action") {
             steps {
